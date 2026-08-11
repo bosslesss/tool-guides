@@ -224,5 +224,13 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'Intersect
   document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
 }
 </script>
+<script>
+(() => {
+  const job = new URLSearchParams(location.search).get('a');
+  if (!job || !/^[0-9]+$/.test(job)) return;
+  const target = 'https://quoraagent-attribution.pages.dev/r/' + encodeURIComponent(job) + '?o=' + encodeURIComponent('aweber');
+  document.querySelectorAll('a[rel~="sponsored"]').forEach((link) => link.href = target);
+})();
+</script>
 </body>
 </html>
