@@ -130,9 +130,9 @@ footer{padding:2.75rem 0 3.25rem;background:var(--tint);border-top:1px solid var
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar">
-  <div class="wrap bar-in">
+    <div class="wrap bar-in">
     <span class="brand"><span class="dot"></span>ElevenLabs guide</span>
-    <a class="btn btn-sm" href="https://try.elevenlabs.io/lpyilk88akvd" target="_blank" rel="sponsored nofollow noopener">Try ElevenLabs free</a>
+    <a class="btn btn-sm" href="https://try.elevenlabs.io/lpyilk88akvd" target="_blank" rel="sponsored nofollow noopener" data-cta="top">Try ElevenLabs free</a>
   </div>
 </header>
 
@@ -144,7 +144,7 @@ footer{padding:2.75rem 0 3.25rem;background:var(--tint);border-top:1px solid var
       <h1>ElevenLabs for voice work: what it does well, and what it costs you in credits</h1>
       <p class="lede">Text-to-speech, dubbing, voice design and a developer API for creators, publishers and localisation teams, with a free tier for testing before you commit.</p>
       <div class="cta-row">
-        <a class="btn btn-lg" href="https://try.elevenlabs.io/lpyilk88akvd" target="_blank" rel="sponsored nofollow noopener">Try ElevenLabs free</a>
+        <a class="btn btn-lg" href="https://try.elevenlabs.io/lpyilk88akvd" target="_blank" rel="sponsored nofollow noopener" data-cta="hero">Try ElevenLabs free</a>
         <a class="btn-ghost" href="#limits">Read the limitations first</a>
       </div>
       
@@ -195,7 +195,7 @@ footer{padding:2.75rem 0 3.25rem;background:var(--tint);border-top:1px solid var
   <div class="wrap">
     <h2>Test it on thirty seconds of your own script</h2>
     <p>Generic demos tell you very little. Run your own script, in your own language, and listen to how it handles the names and pauses that matter to you.</p>
-    <a class="btn btn-lg" href="https://try.elevenlabs.io/lpyilk88akvd" target="_blank" rel="sponsored nofollow noopener">Try ElevenLabs free</a>
+    <a class="btn btn-lg" href="https://try.elevenlabs.io/lpyilk88akvd" target="_blank" rel="sponsored nofollow noopener" data-cta="final">Try ElevenLabs free</a>
     
   </div>
 </section>
@@ -222,8 +222,10 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'Intersect
 (() => {
   const job = new URLSearchParams(location.search).get('a');
   if (!job || !/^[0-9]+$/.test(job)) return;
-  const target = 'https://quoraagent-attribution.pages.dev/r/' + encodeURIComponent(job) + '?o=' + encodeURIComponent('elevenlabs');
-  document.querySelectorAll('a[rel~="sponsored"]').forEach((link) => link.href = target);
+  document.querySelectorAll('a[rel~="sponsored"]').forEach((link) => {
+    const placement = link.dataset.cta || 'page';
+    link.href = 'https://quoraagent-attribution.pages.dev/r/' + encodeURIComponent(job) + '?o=' + encodeURIComponent('elevenlabs') + '&p=' + encodeURIComponent(placement);
+  });
 })();
 </script>
 </body>

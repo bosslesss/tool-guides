@@ -130,9 +130,9 @@ footer{padding:2.75rem 0 3.25rem;background:var(--tint);border-top:1px solid var
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar">
-  <div class="wrap bar-in">
+    <div class="wrap bar-in">
     <span class="brand"><span class="dot"></span>systeme.io guide</span>
-    <a class="btn btn-sm" href="https://systeme.io/?sa=sa0054591885b2cf9e549cc712f3648003719f3f30" target="_blank" rel="sponsored nofollow noopener">Start free on systeme.io</a>
+    <a class="btn btn-sm" href="https://systeme.io/?sa=sa0054591885b2cf9e549cc712f3648003719f3f30" target="_blank" rel="sponsored nofollow noopener" data-cta="top">Start free on systeme.io</a>
   </div>
 </header>
 
@@ -144,7 +144,7 @@ footer{padding:2.75rem 0 3.25rem;background:var(--tint);border-top:1px solid var
       <h1>systeme.io: the all-in-one that can replace four subscriptions — and where it can&#x27;t</h1>
       <p class="lede">Funnels, email marketing, courses, websites, automation and affiliate management on one contact record, with a permanent free plan that needs no credit card.</p>
       <div class="cta-row">
-        <a class="btn btn-lg" href="https://systeme.io/?sa=sa0054591885b2cf9e549cc712f3648003719f3f30" target="_blank" rel="sponsored nofollow noopener">Start free on systeme.io</a>
+        <a class="btn btn-lg" href="https://systeme.io/?sa=sa0054591885b2cf9e549cc712f3648003719f3f30" target="_blank" rel="sponsored nofollow noopener" data-cta="hero">Start free on systeme.io</a>
         <a class="btn-ghost" href="#limits">Read the limitations first</a>
       </div>
       
@@ -201,7 +201,7 @@ footer{padding:2.75rem 0 3.25rem;background:var(--tint);border-top:1px solid var
   <div class="wrap">
     <h2>Try it on one real funnel</h2>
     <p>The free plan is enough to build a working funnel and an email sequence end to end. Build one you actually need, then decide whether the consolidation is worth paying for.</p>
-    <a class="btn btn-lg" href="https://systeme.io/?sa=sa0054591885b2cf9e549cc712f3648003719f3f30" target="_blank" rel="sponsored nofollow noopener">Start free on systeme.io</a>
+    <a class="btn btn-lg" href="https://systeme.io/?sa=sa0054591885b2cf9e549cc712f3648003719f3f30" target="_blank" rel="sponsored nofollow noopener" data-cta="final">Start free on systeme.io</a>
     
   </div>
 </section>
@@ -228,8 +228,10 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'Intersect
 (() => {
   const job = new URLSearchParams(location.search).get('a');
   if (!job || !/^[0-9]+$/.test(job)) return;
-  const target = 'https://quoraagent-attribution.pages.dev/r/' + encodeURIComponent(job) + '?o=' + encodeURIComponent('systeme-io');
-  document.querySelectorAll('a[rel~="sponsored"]').forEach((link) => link.href = target);
+  document.querySelectorAll('a[rel~="sponsored"]').forEach((link) => {
+    const placement = link.dataset.cta || 'page';
+    link.href = 'https://quoraagent-attribution.pages.dev/r/' + encodeURIComponent(job) + '?o=' + encodeURIComponent('systeme-io') + '&p=' + encodeURIComponent(placement);
+  });
 })();
 </script>
 </body>
